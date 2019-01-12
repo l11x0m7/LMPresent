@@ -8,19 +8,17 @@ I mainly re-produce and fine-tune these models on the RACE dataset and the exper
 
 Hope this repo can help you extend these pre-trained models to other tasks.
 
-## How to run
-
-### bert
+## bert
 
 This dir includes the BERT model. Here we present expemeriments on the RACE dataset and the SQuAD dataset(version 1 and version 2)
 
-#### Run on RACE
+### Run on RACE
 
 `bash run_classifier_RACE.sh`: run fine-tuning experiments on RACE
 
 `bash extract_features_RACE.sh`: extract and dump representations of RACE to the local disk
 
-#### Run on SQuAD
+### Run on SQuAD
 
 `run_squad.sh`: run fine-tuning experiments on SQuAD v1.1
 
@@ -32,43 +30,42 @@ This dir includes the BERT model. Here we present expemeriments on the RACE data
 
 `run_squad2.0_with_best_thres.sh`: rerun(only predict) the model with the best threshold
 
-### bilm-tf
+## bilm-tf
 
 This dir includes the ELMo model. Here we present experiments on the RACE dataset.
 
 **NOTE: This repo must be run in the python3 environment!**
 
 
-#### Run on RACE
+### Run on RACE
 
 `python run_race.py`
 
-
-#### Run on SQuAD
+### Run on SQuAD
 
 TO DO!
 
-### finetune-transformer-lm
+## finetune-transformer-lm
 
 This dir includes the GPT model. This is the original repo which refers to [openai/finetune-transformer-lm](https://github.com/openai/finetune-transformer-lm) and it includes experiments on the ROCStories dataset.
 
 **NOTE: you can download pre-trained params from [openai/finetune-transformer-lm](https://github.com/openai/finetune-transformer-lm).**
 
-#### Run on ROCStories
+### Run on ROCStories
 
 `bash run.sh`
 
-### finetune-transformer-lm_RACE
+## finetune-transformer-lm_RACE
 
 This dir includes the GPT model. This is the modified repo which refers to [openai/finetune-transformer-lm](https://github.com/openai/finetune-transformer-lm) and it includes experiments on the RACE dataset.
 
-#### Run on RACE
+### Run on RACE
 
 `bash run.sh`
 
-### Experiental results
+## Experiental results
 
-#### RACE
+### RACE
 
 | epochs | batch size | max input length |  model | Accuracy (%) on dev | Accuracy (%) on test |Accuracy (%) on middle test |Accuracy (%) on high test | device |
 | :--------: |:------:|:------:|:------:|:------:|:------:|:------:|:------:|:------:|
@@ -79,7 +76,7 @@ This dir includes the GPT model. This is the modified repo which refers to [open
 
 Analysis: from the chart above we can see that BERT behaves better than GPT on RACE, and ELMo performs much poorly. I only fine-tune a dense layer both for BERT and GPT, and I fine-tune a bilinear attention layer and a bilinear dot operation for ELMo. **The reason why ELMo behaves poorly is that vector representations extracted from ELMo are individual between articles and questions(also options if considered) **.
 
-#### SQuAD
+### SQuAD
 
 The results are based on the dev set and the `BERT-Base, Uncased Model`.
 
@@ -88,7 +85,7 @@ The results are based on the dev set and the `BERT-Base, Uncased Model`.
 | 3 | 6 | 384| BERT | v1.1 | 81.15  | 88.51 | 1 GTX 1080 |
 | 3 | 6 | 384| BERT | v2 | 76.45  | 73.12 | 1 GTX 1080 |
 
-#### ROCStories
+### ROCStories
 
 | epochs | batch size |  model | Accuracy (%) on dev  |Accuracy (%) on test | device |
 | :--------: |:------:|:------:|:------:|:------:|:------:|
