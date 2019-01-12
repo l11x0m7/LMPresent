@@ -41,10 +41,8 @@ This dir includes the ELMo model. Here we present experiments on the RACE datase
 
 #### Run on RACE
 
-| epochs | batch size | max input length | Accuracy (%) on dev | Accuracy (%) on test |Accuracy (%) on middle test |Accuracy (%) on high test | device |
-| :--------: |:------:|:------:|:------:|:------:|:------:|:------:|:------:|
-| 3   | 8 | 512/32 | 39.39  | 38.57 | 38.23 | 39.02 | 1 GTX 1080 |
-| 25   | 8 | 512/32 | \  | \ | \ | \ | 1 GTX 1080 |
+`python run_race.py`
+
 
 #### Run on SQuAD
 
@@ -76,6 +74,10 @@ This dir includes the GPT model. This is the modified repo which refers to [open
 | :--------: |:------:|:------:|:------:|:------:|:------:|:------:|:------:|:------:|
 | 3   | 1 | 320| GPT | 52.22  | 51.54 | 53.90 | 50.57 | 1 GTX 1080 |
 | 3   | 1 | 512| BERT | 55.65  | 54.11 | 59.26 | 52.00 | 1 GTX 1080 |
+| 3   | 8 | 512/32 | ELMo | 39.39  | 38.57 | 38.23 | 39.02 | 1 GTX 1080 |
+| 25   | 8 | 512/32 | ELMo | \  | \ | \ | \ | 1 GTX 1080 |
+
+Analysis: from the chart above we can see that BERT behaves better than GPT on RACE, and ELMo performs much poorly. I only fine-tune a dense layer both for BERT and GPT, and I fine-tune a bilinear attention layer and a bilinear dot operation for ELMo. **The reason why ELMo behaves poorly is that vector representations extracted from ELMo are individual between articles and questions(also options if considered) **.
 
 #### SQuAD
 
