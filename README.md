@@ -41,7 +41,10 @@ This dir includes the ELMo model. Here we present experiments on the RACE datase
 
 #### Run on RACE
 
-TO DO!
+| epochs | batch size | max input length | Accuracy (%) on dev | Accuracy (%) on test |Accuracy (%) on middle test |Accuracy (%) on high test | device |
+| :--------: |:------:|:------:|:------:|:------:|:------:|:------:|:------:|
+| 3   | 8 | 512/32 | 39.39  | 38.57 | 38.23 | 39.02 | 1 GTX 1080 |
+| 25   | 8 | 512/32 | \  | \ | \ | \ | 1 GTX 1080 |
 
 #### Run on SQuAD
 

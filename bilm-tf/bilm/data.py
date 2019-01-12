@@ -194,7 +194,7 @@ class Batcher(object):
     ''' 
     Batch sentences of tokenized text into character id matrices.
     '''
-    def __init__(self, lm_vocab_file: str, max_token_length: int):
+    def __init__(self, lm_vocab_file: str, max_token_length: int, max_sentence_length: int = 0):
         '''
         lm_vocab_file = the language model vocabulary file (one line per
             token)
@@ -204,6 +204,7 @@ class Batcher(object):
             lm_vocab_file, max_token_length
         )
         self._max_token_length = max_token_length
+        self._max_sentence_length = max_sentence_length
 
     def batch_sentences(self, sentences: List[List[str]]):
         '''
@@ -213,16 +214,20 @@ class Batcher(object):
         '''
         n_sentences = len(sentences)
         max_length = max(len(sentence) for sentence in sentences) + 2
+        if self._max_sentence_length > 0:
+            max_length = min(self._max_sentence_length, max_length)
 
         X_char_ids = np.zeros(
             (n_sentences, max_length, self._max_token_length),
-            dtype=np.int64
+            dtype=np.int32
         )
 
         for k, sent in enumerate(sentences):
-            length = len(sent) + 2
+            length = len(sent)
+            length = min(length, max_length - 2)
             char_ids_without_mask = self._lm_vocab.encode_chars(
-                sent, split=False)
+                sent[:length], split=False)
+            length += 2
             # add one so that 0 is the mask value
             X_char_ids[k, :length, :] = char_ids_without_mask + 1
 
