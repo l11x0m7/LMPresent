@@ -12,6 +12,10 @@ Hope this repo can help you extend these pre-trained models to other tasks.
 
 This dir includes the BERT model. Here we present expemeriments on the RACE dataset and the SQuAD dataset(version 1 and version 2)
 
+### Run on WikiQA
+
+`bash run_classifier_wikiqa.sh`: run fine-tuning experiments on WikiQA
+
 ### Run on RACE
 
 `bash run_classifier_RACE.sh`: run fine-tuning experiments on RACE
@@ -64,6 +68,12 @@ This dir includes the GPT model. This is the modified repo which refers to [open
 `bash run.sh`
 
 ## Experiental results
+
+
+### WikiQA
+
+| epochs | batch size | max input length |  model | Overlap | MAP | MRR | device |
+| 3   | 1 | 256| BERT | 243/633 | 76.5  | 78.0 | 1 GTX 1080 |
 
 ### RACE
 

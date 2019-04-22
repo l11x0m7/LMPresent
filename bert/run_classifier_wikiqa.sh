@@ -1,18 +1,19 @@
 #!/bin/bash
 
 export BERT_BASE_DIR=~/models/uncased_L-12_H-768_A-12
-export RACE_DIR=~/data/RACE/
+export WIKI_DIR=~/data/WikiQACorpus
 
-python3 run_classifier_RACE.py \
-  --task_name=RACE2 \
+python3 run_classifier_wikiqa.py \
+  --task_name=wikiqa \
   --do_train=true \
   --do_eval=true \
-  --data_dir=$RACE_DIR \
+  --do_predict=true \
+  --data_dir=$WIKI_DIR \
   --vocab_file=$BERT_BASE_DIR/vocab.txt \
   --bert_config_file=$BERT_BASE_DIR/bert_config.json \
   --init_checkpoint=$BERT_BASE_DIR/bert_model.ckpt \
-  --max_seq_length=512 \
+  --max_seq_length=256 \
   --train_batch_size=1 \
   --learning_rate=2e-5 \
   --num_train_epochs=3.0 \
-  --output_dir=/tmp/race_output/
+  --output_dir=/tmp/wikiqa_output/

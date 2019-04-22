@@ -110,3 +110,4 @@ venv.bak/
 *save/
 *submission/
 *data/
+*.log
