@@ -73,6 +73,7 @@ This dir includes the GPT model. This is the modified repo which refers to [open
 ### WikiQA
 
 | epochs | batch size | max input length |  model | Overlap | MAP | MRR | device |
+| :--------: |:------:|:------:|:------:|:------:|:------:|:------:|:------:|
 | 3   | 1 | 256| BERT | 243/633 | 76.5  | 78.0 | 1 GTX 1080 |
 
 ### RACE
